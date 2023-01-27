@@ -1,0 +1,30 @@
+<div class="container-lg mx-auto mt-5 " [ngStyle]="{ minWidth: '640px' }">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Color</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Options</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let product of product$ | async ; let i = index">
+      <tr>
+        <th scope="row">{{i + 1}}</th>
+        <td>{{product.marca}}</td>
+        <td>{{product.modelo}}</td>
+        <td>{{product.color}}</td>
+        <td>{{product.precio}}</td>
+        <td>
+          <i (click)="openModal(product._id)" class="fa-solid fa-pen-to-square mx-2 update-ico"></i>
+          <i (click)="deleteProduct(product._id)" class="fa-solid fa-trash-can trash-ico "></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<app-modal></app-modal>

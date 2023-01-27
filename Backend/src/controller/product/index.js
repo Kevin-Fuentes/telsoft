@@ -31,11 +31,14 @@ async function putProduct(req, res) {
     res.status(400).json({ ok: false, message: "error in the service" });
   }
 }
+
 async function deleteProduct(req, res) {
   try {
-  await Producto.findByIdAndRemove({ _id: req.params.id });
+  await Product.findByIdAndDelete({ _id: req.params.id });
     res.status(200).json({ ok: true, message: "Delete Completed" });
-  } catch (error) { res.status(400).json({ ok: false, message: "error in the service" }); }
+  } catch (error) {
+    res.status(400).json({ ok: false, message: "error in the service" });
+  }
 }
 
 export { getProduct, postProduct, putProduct, deleteProduct };
